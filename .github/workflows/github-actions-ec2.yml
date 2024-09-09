@@ -1,6 +1,5 @@
 name: Push-to-EC2
 
-# Trigger deployment only on push to main branch
 on:
   push:
     branches:
@@ -8,23 +7,23 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to EC2 on master branch push
+    name: Deploy to EC2 on push to main branch
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the files
-        uses: actions/checkout@v2
+      - name: Checkout the repository
+        uses: actions/checkout@v3
 
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
+      - name: Deploy to EC2 Server
+        uses: easingthemes/ssh-deploy@v2.1.5  # Prefer a specific version
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
 
-      - name: Executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
+      - name: Execute remote commands on EC2
+        uses: appleboy/ssh-action@v0.1.4  # Pin a specific version
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
@@ -34,5 +33,6 @@ jobs:
             sudo apt-get install -y apache2
             sudo systemctl start apache2
             sudo systemctl enable apache2
-            cd home
+            cd /home/ubuntu  # Adjust this if necessary
             sudo mv * /var/www/html
+            sudo chown -R www-data:www-data /var/www/html
