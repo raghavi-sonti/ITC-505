@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3 - How to Include a Custom Font</title>
+    <style>
+        /* Define the custom font using @font-face */
+        @font-face {
+            font-family: 'Jokerman';
+            src: url('fonts/jokerman.woff2') format('woff2'),
+                 url('fonts/jokerman.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Apply the custom font */
+        body {
+            font-family: 'Jokerman', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ff6347;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-left: 4px solid #ff6347;
+            font-family: monospace;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>How to Include a Custom Font in a Webpage</h1>
+
+    <p>
+        To include a custom font in your webpage, you can use the <code>@font-face</code> CSS rule. This rule allows the browser to download and use a font that is not installed on the user's computer. Below are the steps to include a custom font.
+    </p>
+
+    <h2>Steps to Include a Custom Font</h2>
+
+    <ol>
+        <li>First, download the font files (e.g., <code>.woff</code> or <code>.woff2</code> format). In this example, we are using the <strong>Jokerman</strong> font.</li>
+        <li>Place the font files in a folder on your server. For instance, you could place them in a folder called <code>fonts</code>.</li>
+        <li>In your CSS file (or embedded CSS in your HTML), use the <code>@font-face</code> rule to define the custom font. Here’s how it looks:</li>
+    </ol>
+
+    <pre>
+    @font-face {
+        font-family: 'Jokerman';
+        src: url('fonts/jokerman.woff2') format('woff2'),
+             url('fonts/jokerman.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </pre>
+
+    <p>
+        The <code>font-family</code> specifies the name you'll use to reference this font in your CSS. The <code>src</code> property tells the browser where to find the font files on your server, and it specifies the format of each font file (e.g., <code>woff</code> or <code>woff2</code>).
+    </p>
+
+    <ol start="4">
+        <li>Finally, apply the custom font to any HTML element by using the <code>font-family</code> CSS property. For example, to apply the <strong>Jokerman</strong> font to the body of your webpage, you would use the following CSS:</li>
+    </ol>
+
+    <pre>
+    body {
+        font-family: 'Jokerman', sans-serif;
+    }
+    </pre>
+
+    <p>
+        You can now see the custom font applied to this webpage. The text on this page is being styled using the <strong>Jokerman</strong> font.
+    </p>
+
+    <footer>
+        <p>Last updated: 
+            <span id="lastModified"></span>
+        </p>
+    </footer>
+
+    <script type="text/javascript">
+         var x = document.lastModified;
+         document.getElementById('lastModified').textContent = x;
+    </script>
+</body>
+</html>
