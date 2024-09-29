@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3 - Jokerman Font Demo</title>
+    <style>
+        /* Define the custom font using @font-face */
+        @font-face {
+            font-family: 'Jokerman';
+            src: url('fonts/jokerman.woff2') format('woff2'),
+                 url('fonts/jokerman.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Apply the custom font */
+        body {
+            font-family: 'Jokerman', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff6347;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-left: 4px solid #ff6347;
+            font-family: monospace;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Using the Jokerman Font with @font-face</h1>
+    <p>
+        In this demonstration, we use the <code>@font-face</code> rule in CSS to serve the Jokerman font to the user's browser. 
+        The font file is hosted on the server, and the browser will download and display it even if the font is not installed on the client’s computer. 
+        This creates a unique and very different appearance for our page.
+    </p>
+
+    <p>
+        The CSS rule below demonstrates how the Jokerman font is applied:
+    </p>
+    <pre>
+    @font-face {
+        font-family: 'Jokerman';
+        src: url('/itc505/lab-3/fonts/jokerman.woff2') format('woff2');
+    }
+    </pre>
+
+    <footer>
+        <p>Last updated: 
+            <span id="lastModified"></span>
+        </p>
+    </footer>
+    <script type="text/javascript">
+         var x = document.lastModified;
+         document.getElementById('lastModified').textContent = x;
+    </script>
+</body>
+</html>
